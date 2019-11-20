@@ -21,12 +21,58 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       <li class="nav-item">
-
+        
       </li>
     </ul>
 
   </div>
 </nav>
+
+<div class="text-center">
+  <!-- Button trigger modal Add a new view -->
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Add a new View...
+      </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add a new View</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="booyah-box">
+        <%= simple_form_for @view.new do |f| %>
+          <div class="modal-body">
+            <div class="booyah-box">
+              <%= f.input :name %>
+              <%= f.input :description %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <%= f.submit 'Create', class: 'btn btn-primary' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="booyah-box">
+    <% @view.each do |view| %>
+      <div>
+        <h1><%= view.name %></h1><br />
+        <p><%= view.description %></p><br />
+      </div>
+
+      <hr />
+    <% end %>
+  </div>
 
   <%= yield %>
 
